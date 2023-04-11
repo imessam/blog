@@ -20,5 +20,13 @@ from .views import *
 urlpatterns = [
     path("", PostList.as_view(), name="PostList"),
     path("about/", AboutView.as_view(), name="About"),
-    path("about/<int:pk>", PostDetails.as_view(), name="PostDetails")
+    path("post/<int:pk>", PostDetails.as_view(), name="PostDetails"),
+    path("post/add",PostCreate.as_view(), name = "PostAdd"),
+    path("post/<int:pk>/publish",postPublish,name = "PostPublish"),
+    path("post/<int:pk>/edit", PostUpdate.as_view(), name = "PostEdit"),
+    path("post/<int:pk>/delete", PostDelete.as_view(), name = "PostDelete"),
+    path("post/<int:pk>/comment/add", commentAdd,name = "CommentAdd"),
+    path("comment/<int:pk>/approve",commentApprove, name = "CommentApprove"),
+    path("comment/<int:pk>/delete",commentDelete, name = "CommentDelete")
+
 ]
