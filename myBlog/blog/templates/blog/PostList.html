@@ -2,4 +2,18 @@
 
 {% block body_block %}
 
+<div class="centerstage">
+    {% for post in postList %}
+
+    <div class="posts">
+        <h1><a href="{% url 'PostDetails' pk=post.pk %}">{{post.title}}</a></h1>
+        <div class="date">
+            <p>Published on : {{post.published|date:"D M Y"}}</p>
+        </div>
+        <a href="{% url 'PostDetails' pk=post.pk %}">Comments : {{post.approved_comments.count}}</a>
+    </div>
+
+    {% endfor %}
+</div>
+
 {% endblock %}
