@@ -6,4 +6,25 @@
 
 {% block body_block %}
 
+
+    <div class="jumbotron">
+        <h2>Please Login !</h2>
+
+        {% if form.errors %}
+        <p>Wrong password or username !!</p>
+        {% endif %}
+
+        <form action="{% url 'login' %}" method="POST">
+
+            {% csrf_token %}
+            {% form.as_p %}
+            <input type="submit" class="btn btn-primary" value="Login">
+            <input type="hidden" name = "text" value="{{next}}">
+
+
+        </form>
+
+
+    </div>
+
 {% endblock %}
